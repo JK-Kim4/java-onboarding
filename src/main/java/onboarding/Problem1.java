@@ -1,14 +1,15 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
-class Problem1 {
+public class Problem1 {
 
     // 01. 책음 임의로 펼친다. -> 인스턴스 생성
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         // 00. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.(예외사항)
-        if(startCondition(pobi) && startCondition(crong)) return -1;
+        //if(startCondition(pobi) && startCondition(crong)) return -1;
 
         // 02. 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
         // 03. 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
@@ -18,6 +19,7 @@ class Problem1 {
         // 05. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
 
 
+        Problem1.calculateScore(pobi);
 
 
 
@@ -29,9 +31,31 @@ class Problem1 {
         return !target.contains(1) && !target.contains(400);
     }
 
-    private static Integer findScore(List<Integer> target){
+    private static Integer calculateScore(List<Integer> target){
+        Integer[] pageLElement = new Integer[3];
+        Integer[] pageRElement = new Integer[3];
 
+        Integer pageL = target.get(0);
+        Integer pageR = target.get(1);
+
+        pageLElement = Problem1.separateIntDigit(pageL);
+        pageRElement = Problem1.separateIntDigit(pageR);
+
+        System.out.println(pageLElement.toString());
+        System.out.println(pageRElement.toString());
 
         return null;
+    }
+
+    private static Integer[] separateIntDigit(Integer param){
+        Integer[] result = new Integer[3];
+        int cnt = 0;
+        while (param > 0){
+            result[cnt] = param % 10;
+            param = param / 10;
+            cnt++;
+        }
+
+        return result;
     }
 }
