@@ -33,7 +33,9 @@ public class Problem1 {
 
     //시작 조건 검사
     public static boolean 시작_조건_확인(List<Integer> parameter){
-        return ( parameter.contains(1) || parameter.contains(400) );
+        return ( parameter.contains(1)
+                    || parameter.contains(400)
+                        || (parameter.get(1) - parameter.get(0)) > 1);
     }
 
     //각 자리수 합 (재귀 호출)
