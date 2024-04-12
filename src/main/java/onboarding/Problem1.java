@@ -13,22 +13,32 @@ public class Problem1 {
     }
 
     //시작 조건 검사
-    public boolean 시작_조건_확인(List<Integer> parameter){
-
+    public static boolean 시작_조건_확인(List<Integer> parameter){
+        return !( parameter.contains(1) || parameter.contains(400) );
     }
 
     //각 자리수 합 (재귀 호출)
-    public Integer 각_자리수_합(Integer parameter){
-
+    public static Integer 각_자리수_합(Integer parameter){
+        Integer result = 0;
+        while ( parameter != 0){
+            result += (parameter % 10);
+            parameter = parameter / 10;
+        }
+        return result;
     }
 
     //각 자리수 곱(재귀 호출)
-    public Integer 각_자리수_곱(Integer parameter){
-
+    public static Integer 각_자리수_곱(Integer parameter){
+        Integer result = 1;
+        while ( parameter != 0){
+            result *= (parameter % 10);
+            parameter = parameter / 10;
+        }
+        return result;
     }
 
     //두 값 비교
-    public Integer 두_값중_더_큰_값_리턴(Integer parameter1, Integer parameter2){
+    public static Integer 두_값중_더_큰_값_리턴(Integer parameter1, Integer parameter2){
         return Math.max(parameter1, parameter2);
     }
 }
