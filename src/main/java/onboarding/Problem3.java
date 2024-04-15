@@ -7,14 +7,8 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        Pattern pattern = Pattern.compile("([369])");
-
         for(int i = 1; i <= number; i++){
-            Matcher matcher = pattern.matcher(String.valueOf(i));
-            if (matcher.find()){
-                System.out.println(i);
-                answer++;
-            }
+            answer += (int)String.valueOf(i).chars().filter(c -> c == '3' || c == '6' || c == '9').count();
         }
 
         return answer;
